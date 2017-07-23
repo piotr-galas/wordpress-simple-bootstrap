@@ -28,7 +28,7 @@ function simple_boostrap_theme_support() {
     ]);
     add_theme_support( 'title-tag' );
     register_nav_menus(                      // wp3+ menus
-        array( 
+        array(
             'main_nav' => __('Main Menu', 'simple-bootstrap'),   // main nav in header
         )
     );
@@ -37,16 +37,16 @@ function simple_boostrap_theme_support() {
 }
 add_action('after_setup_theme','simple_boostrap_theme_support');
 
-function simple_bootstrap_theme_scripts() { 
+function simple_bootstrap_theme_scripts() {
     // For child themes
     wp_register_style( 'wpbs-style', get_stylesheet_directory_uri() . '/style.css', array(), null, 'all' );
     wp_enqueue_style( 'wpbs-style' );
-    wp_register_script( 'bower-libs', 
-        get_template_directory_uri() . '/app.min.js', 
-        array('jquery'), 
+    wp_register_script( 'bower-libs',
+        get_template_directory_uri() . '/app.min.js',
+        array('jquery'),
         null );
     wp_enqueue_script('bower-libs');
-    
+
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
     }
@@ -84,7 +84,7 @@ function simple_boostrap_register_sidebars() {
     	'before_title' => '<h4 class="widgettitle">',
     	'after_title' => '</h4>',
     ));
-    
+
     register_sidebar(array(
       'id' => 'footer1',
       'name' => __('Footer', 'simple-bootstrap'),
@@ -93,7 +93,7 @@ function simple_boostrap_register_sidebars() {
       'before_title' => '<h4 class="widgettitle">',
       'after_title' => '</h4>',
     ));
-    
+
 }
 add_action( 'widgets_init', 'simple_boostrap_register_sidebars' );
 
@@ -145,12 +145,12 @@ class simple_bootstrap_Bootstrap_walker extends Walker_Nav_Menu {
 
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $object, $depth, $args );
     } // end start_el function
-    
+
     function start_lvl(&$output, $depth = 0, $args = Array()) {
         $indent = str_repeat("\t", $depth);
         $output .= "\n$indent<ul class='dropdown-menu' role='menu'>\n";
     }
-    
+
     function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ){
         $id_field = $this->db_fields['id'];
         if ( is_object( $args[0] ) ) {
@@ -165,7 +165,7 @@ function simple_bootstrap_add_active_class($classes, $item) {
     if( in_array('current-menu-item', $classes) ) {
         $classes[] = "active";
     }
-  
+
     return $classes;
 }
 add_filter('nav_menu_css_class', 'simple_bootstrap_add_active_class', 10, 2 );
@@ -174,7 +174,7 @@ add_filter('nav_menu_css_class', 'simple_bootstrap_add_active_class', 10, 2 );
 // this menu is limited to 2 levels (that's a bootstrap limitation)
 function simple_bootstrap_display_main_menu() {
     wp_nav_menu(
-        array( 
+        array(
             'theme_location' => 'main_nav', /* where in the theme it's assigned */
             'menu' => 'main_nav', /* menu name */
             'menu_class' => 'nav navbar-nav',
@@ -199,9 +199,10 @@ function simple_bootstrap_display_post_meta() {
             </a>
         </li>
         <li>
-            <a href="<?php echo get_author_posts_url(get_the_author_meta('ID'));?>">
-                <span class="glyphicon glyphicon-user"></span>
-                <?php the_author(); ?>
+            <?php echo '<a href="' . esc_url( get_category_link( get_the_category()[0]->term_id ) ) . '">'; ?>
+              <span class="glyphicon glyphicon-folder-open"></span>&nbsp;
+              <?php echo esc_html( get_the_category()[0]->name ) ?>
+
             </a>
         </li>
         <?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>
@@ -238,9 +239,9 @@ function simple_boostrap_page_navi() {
 function simple_boostrap_display_post($multiple_on_page) { ?>
 
     <article id="post-<?php the_ID(); ?>" <?php post_class("block"); ?> role="article">
-        
+
         <header>
-            
+
             <?php if ($multiple_on_page) : ?>
             <div class="article-header">
                 <h2 class="h1"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
@@ -262,9 +263,9 @@ function simple_boostrap_display_post($multiple_on_page) { ?>
             <?php } ?>
 
             <?php simple_bootstrap_display_post_meta() ?>
-        
+
         </header>
-    
+
         <section class="post_content">
             <?php
             if ($multiple_on_page) {
@@ -275,11 +276,11 @@ function simple_boostrap_display_post($multiple_on_page) { ?>
             }
             ?>
         </section>
-        
+
         <footer>
             <?php the_tags('<p class="tags">', ' ', '</p>'); ?>
         </footer>
-    
+
     </article>
 
 <?php }
