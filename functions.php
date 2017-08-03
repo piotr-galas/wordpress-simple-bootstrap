@@ -280,7 +280,7 @@ function simple_boostrap_display_post($multiple_on_page) { ?>
         <footer>
             <?php the_tags('<p class="tags">', ' ', '</p>'); ?>
         </footer>
-
+      </article>
 
 <?php }
 

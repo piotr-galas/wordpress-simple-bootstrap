@@ -13,6 +13,7 @@
 		<?php if (get_next_post() || get_previous_post()) { ?>
 
 		<?php } ?>
+		<div class="disqus-outer">
       <div class="disqus-space"></div>
 			<div id="disqus_thread"></div>
 				<script>
@@ -34,7 +35,7 @@
 				})();
 				</script>
 				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-			</article><!-- this tag is started in functions.php -->
+	   </div>
 		<?php endwhile; ?>
 
 
