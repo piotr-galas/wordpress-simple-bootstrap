@@ -269,7 +269,8 @@ function simple_boostrap_display_post($multiple_on_page) { ?>
         <section class="post_content">
             <?php
             if ($multiple_on_page) {
-                the_excerpt();
+                // the_excerpt();
+                the_content();
             } else {
                 the_content();
                 wp_link_pages();

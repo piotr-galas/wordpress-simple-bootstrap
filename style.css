@@ -7170,3 +7170,9 @@ article.block {
   padding: 1px 35px;
   margin-bottom: 20px;
 }
+.list-of-posts .not-visible-on-list {
+  display: none;
+}
+.list-of-posts .more-link {
+  display: none;
+}
