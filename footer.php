@@ -9,6 +9,10 @@
                         <?php dynamic_sidebar('footer1'); ?>
 
                         <div class="col-xs-12 text-center">
+                          <p>Moje inne nieprogramistyczne projekty:
+                            <a href="https://wypozycz-nosidelko.pl">Wypozyczalnia turystycznych nosidełek w Krakowie</a> oraz
+                            <a href="http://razemnaszlaku.pl">razemnaszlaku.pl - Portal turystyczny</a>
+                          </p>
                           <script>
                               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -18,6 +22,7 @@
                               ga('create', 'UA-103586477-1', 'auto');
                               ga('send', 'pageview');
                           </script>
+
                         </div>
                     </div>
                 </div>
